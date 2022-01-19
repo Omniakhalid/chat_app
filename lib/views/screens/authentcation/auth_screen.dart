@@ -1,7 +1,7 @@
 import 'package:chat/controllers/auth_provider.dart';
 import 'package:chat/views/screens/authentcation/login_screen.dart';
 import 'package:chat/views/screens/authentcation/register_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget {

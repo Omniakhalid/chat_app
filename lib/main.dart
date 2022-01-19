@@ -3,6 +3,7 @@ import 'package:chat/views/screens/authentcation/auth_screen.dart';
 import 'package:chat/views/screens/authentcation/home_screen.dart';
 import 'package:chat/views/screens/authentcation/login_screen.dart';
 import 'package:chat/views/screens/authentcation/register_screen.dart';
+import 'package:chat/views/screens/create_room_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -44,10 +45,10 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         LoginScreen.routeName: (buildContext) => LoginScreen(),
-        //RegisterScreen.routeName: (buildContext) => RegisterScreen(),
+        CreateRoom.routeName: (buildContext) => CreateRoom(),
 
       },
-      //initialRoute: LoginScreen.routeName,
+      //initialRoute: CreateRoom.routeName,
     );
   }
 }
