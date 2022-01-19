@@ -1,6 +1,10 @@
+import 'package:chat/controllers/room_provider.dart';
 import 'package:chat/models/constants.dart';
+import 'package:chat/models/room.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 class CreateRoom extends StatefulWidget {
   static String routeName = "CreateRoom";
   @override
@@ -122,7 +126,7 @@ class _CreateRoomState extends State<CreateRoom> {
                                     width: double.infinity,
                                     color: Colors.blue,
                                     child: MaterialButton(
-                                      onPressed: () {},
+                                      onPressed: () {createRoom();},
                                       child: Text('Create', style: TextStyle(color: Colors.white),),)),
 
                               ],
@@ -135,5 +139,24 @@ class _CreateRoomState extends State<CreateRoom> {
             ),
         )
     );
+  }
+  void createRoom()async{
+    if(formKey.currentState!.validate()){
+      RoomData roomData = RoomData(roomNameController.text, category!, roomDescriptionController.text, [FirebaseAuth.instance.currentUser!.uid]);
+      setState(() {
+        createdRoom = true;
+      });
+      String? error = await Provider.of<RoomProvider>(context,listen: false).createRoom(roomData);
+      if(error == null)
+        Navigator.of(context).pop();
+      else{
+        setState(() {
+          createdRoom = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(error),
+        ));
+      }
+    }
   }
 }

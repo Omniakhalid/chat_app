@@ -1,4 +1,5 @@
 import 'package:chat/controllers/auth_provider.dart';
+import 'package:chat/controllers/room_provider.dart';
 import 'package:chat/views/screens/authentcation/auth_screen.dart';
 import 'package:chat/views/screens/authentcation/home_screen.dart';
 import 'package:chat/views/screens/authentcation/login_screen.dart';
@@ -11,7 +12,11 @@ import 'package:provider/provider.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(ChangeNotifierProvider(create:(context)=>AuthProvider(),child: MyApp()));
+  runApp(MultiProvider(
+      providers:[
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => RoomProvider()),
+      ],child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
