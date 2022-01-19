@@ -46,7 +46,7 @@ class _CreateRoomState extends State<CreateRoom> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)
                   ),
-                  elevation: 10,//shadow
+                  elevation: 5,//shadow
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
